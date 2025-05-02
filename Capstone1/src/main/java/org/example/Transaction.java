@@ -29,8 +29,8 @@ public class Transaction {
         return String.format("%s|%s|%s|%s|%.2f",
                 date,
                 time,
-                description.replace("|", ""), // Prevent pipe characters in data
-                vendor.replace("|", ""),       // Same here
+                description.replace("|", ""),
+                vendor.replace("|", ""),
                 amount);
     }
 
