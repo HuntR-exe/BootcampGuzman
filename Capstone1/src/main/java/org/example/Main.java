@@ -21,8 +21,11 @@ public class Main {
 
             switch (choice) {
                 case "1": addTransaction(true);
+                    break;
                 case "2": addTransaction(false);
+                    break;
                 case "3": viewLedger();
+                    break;
                 case "4": {
                     System.exit(0);
                 }
@@ -80,18 +83,18 @@ public class Main {
         System.out.println("\n=== TRANSACTION LEDGER ===");
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
-            Transaction transcations = transactions.get(i);
+            Transaction transcation = transactions.get(i);
 
-            if (filter.equals("2") && transcations.getAmount() < 0) continue;
-            if (filter.equals("3") && transcations.getAmount() > 0) continue;
+            if (filter.equals("2") && transcation.getAmount() < 0) continue;
+            if (filter.equals("3") && transcation.getAmount() > 0) continue;
 
             System.out.printf("%s %s | %-20s | %-15s | %s%.2f%n",
-                    transcations.getDate(),
-                    transcations.getTime(),
-                    transcations.getDescription(),
-                    transcations.getVendor(),
-                    transcations.getAmount() > 0 ? "+" : "-",
-                    Math.abs(transcations.getAmount()));
+                    transcation.getDate(),
+                    transcation.getTime(),
+                    transcation.getDescription(),
+                    transcation.getVendor(),
+                    transcation.getAmount() > 0 ? "+" : "-",
+                    Math.abs(transcation.getAmount()));
         }
     }
 }

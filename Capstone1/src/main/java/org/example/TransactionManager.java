@@ -34,13 +34,13 @@ public class TransactionManager {
 
         if (!file.exists()) return transactions;
 
-        try (Scanner scanner = new Scanner(file)) {
+        try (Scanner fileScanner = new Scanner(file)) {
+            // Skip header
+            if (fileScanner.hasNextLine()) fileScanner.nextLine();
 
-            if (scanner.hasNextLine()) scanner.nextLine();
-
-            while (scanner.hasNextLine()) {
-                String[] parts = scanner.nextLine().split("\\|");
-                if (parts.length == 5) {
+            while(fileScanner.hasNextLine()) {
+                String[] parts = fileScanner.nextLine().split("\\|");
+                if(parts.length == 5) {
                     transactions.add(new Transaction(
                             LocalDate.parse(parts[0]),
                             LocalTime.parse(parts[1]),
@@ -51,7 +51,7 @@ public class TransactionManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading transactions: " + e.getMessage());
+            System.out.println("Error loading transactions: " + e.getMessage());
         }
         return transactions;
     }

@@ -24,4 +24,14 @@ public class Transaction {
     public String getVendor() { return vendor; }
     public double getAmount() { return amount; }
 
+    @Override
+    public String toString() {
+        return String.format("%s|%s|%s|%s|%.2f",
+                date,
+                time,
+                description.replace("|", ""), // Prevent pipe characters in data
+                vendor.replace("|", ""),       // Same here
+                amount);
+    }
+
 }
