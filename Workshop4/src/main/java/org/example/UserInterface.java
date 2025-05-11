@@ -30,7 +30,7 @@ public class UserInterface {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1 -> processGetByPriceRequest();

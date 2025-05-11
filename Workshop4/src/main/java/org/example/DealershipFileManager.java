@@ -29,7 +29,7 @@ public class DealershipFileManager {
 
     public void saveDealership(Dealership dealership) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            // Write dealership info
+
             writer.write(String.join("|",
                     dealership.getName(),
                     dealership.getAddress(),
@@ -37,7 +37,7 @@ public class DealershipFileManager {
             ));
             writer.newLine();
 
-            // Write vehicles
+
             for (Vehicle vehicle : dealership.getAllVehicles()) {
                 writer.write(vehicle.toCSV());
                 writer.newLine();
