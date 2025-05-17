@@ -74,7 +74,7 @@ public class Dealership {
     public List<Vehicle> getVehiclesByType(String vehicleType) {
         List<Vehicle> results = new ArrayList<>();
         for (Vehicle vehicle : inventory) {
-            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType.trim())) {
                 results.add(vehicle);
             }
         }

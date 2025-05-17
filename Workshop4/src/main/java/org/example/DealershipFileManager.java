@@ -11,7 +11,7 @@ public class DealershipFileManager {
 
         if (!inventoryFile.exists()) {
             try {
-                inventoryFile.getParentFile().mkdirs(); // Create parent directories
+                inventoryFile.getParentFile().mkdirs();
                 inventoryFile.createNewFile();
                 System.out.println("Created new inventory file: " + FILE_PATH);
                 return new Dealership("Default Dealership", "Unknown Address", "000-000-0000");
