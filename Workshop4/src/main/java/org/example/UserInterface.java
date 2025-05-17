@@ -16,7 +16,8 @@ public class UserInterface {
 
     public void display() {
         while (true) {
-            System.out.println("\n---- Dealership Menu ----");
+            System.out.println("\n---- GearHeads ~ Japan ----");
+
             System.out.println("1. Search by Price");
             System.out.println("2. Search by Make/Model");
             System.out.println("3. Search by Year");
@@ -88,7 +89,6 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByYear(min, max));
     }
 
-    // Similar implementations for other filter methods...
 
     private void processAddVehicleRequest() {
         System.out.println("Enter vehicle details:");

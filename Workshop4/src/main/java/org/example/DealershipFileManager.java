@@ -3,16 +3,16 @@ package org.example;
 import java.io.*;
 
 public class DealershipFileManager {
-    private static final String FILE_NAME = "dealership.csv";
+    private static final String FILE_PATH = "src/main/resources/Inventory.csv";
 
     public Dealership getDealership() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 
             String[] dealerInfo = reader.readLine().split("\\|");
             Dealership dealership = new Dealership(
-                    dealerInfo[0],
-                    dealerInfo[1],
-                    dealerInfo[2]
+                    dealerInfo[0].trim(),
+                    dealerInfo[1].trim(),
+                    dealerInfo[2].trim()
             );
 
 
@@ -28,7 +28,7 @@ public class DealershipFileManager {
     }
 
     public void saveDealership(Dealership dealership) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
 
             writer.write(String.join("|",
                     dealership.getName(),

@@ -40,10 +40,10 @@ public class Vehicle {
         return new Vehicle(
                 Integer.parseInt(parts[0]),  // VIN
                 Integer.parseInt(parts[1]),  // Year
-                parts[2],                   // Make
-                parts[3],                   // Model
-                parts[4],                   // Vehicle Type
-                parts[5],                   // Color
+                parts[2],                    // Make
+                parts[3],                    // Model
+                parts[4],                    // Vehicle Type
+                parts[5],                    // Color
                 Integer.parseInt(parts[6]),  // Odometer
                 Double.parseDouble(parts[7]) // Price
         );
