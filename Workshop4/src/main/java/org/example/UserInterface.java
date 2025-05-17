@@ -17,7 +17,6 @@ public class UserInterface {
     public void display() {
         while (true) {
             System.out.println("\n---- GearHeads ~ Japan ----");
-
             System.out.println("1. Search by Price");
             System.out.println("2. Search by Make/Model");
             System.out.println("3. Search by Year");

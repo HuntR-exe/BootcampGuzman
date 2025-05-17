@@ -38,14 +38,14 @@ public class Vehicle {
     public static Vehicle fromCSV(String csvLine) {
         String[] parts = csvLine.split("\\|");
         return new Vehicle(
-                Integer.parseInt(parts[0]),  // VIN
-                Integer.parseInt(parts[1]),  // Year
-                parts[2],                    // Make
-                parts[3],                    // Model
-                parts[4],                    // Vehicle Type
-                parts[5],                    // Color
-                Integer.parseInt(parts[6]),  // Odometer
-                Double.parseDouble(parts[7]) // Price
+                Integer.parseInt(parts[0]),    // VIN
+                Integer.parseInt(parts[1]),    // Year
+                parts[2],                      // Make
+                parts[3],                      // Model
+                parts[4],                      // Type
+                parts[5],                      // Color
+                Integer.parseInt(parts[6]),    // Odometer
+                Double.parseDouble(parts[7])   // Price
         );
     }
 

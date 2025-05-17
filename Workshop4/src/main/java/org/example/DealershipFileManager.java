@@ -6,6 +6,20 @@ public class DealershipFileManager {
     private static final String FILE_PATH = "src/main/resources/Inventory.csv";
 
     public Dealership getDealership() {
+        File inventoryFile = new File(FILE_PATH);
+
+
+        if (!inventoryFile.exists()) {
+            try {
+                inventoryFile.getParentFile().mkdirs(); // Create parent directories
+                inventoryFile.createNewFile();
+                System.out.println("Created new inventory file: " + FILE_PATH);
+                return new Dealership("Default Dealership", "Unknown Address", "000-000-0000");
+            } catch (IOException e) {
+                System.out.println("Error creating inventory file.");
+            }
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 
             String[] dealerInfo = reader.readLine().split("\\|");
@@ -15,14 +29,19 @@ public class DealershipFileManager {
                     dealerInfo[2].trim()
             );
 
-
             String line;
             while ((line = reader.readLine()) != null) {
-                dealership.addVehicle(Vehicle.fromCSV(line));
+                try {
+                    Vehicle vehicle = Vehicle.fromCSV(line);
+                    dealership.addVehicle(vehicle);
+                } catch (Exception e) {
+                    System.out.println("Skipping invalid vehicle entry.");
+                }
             }
             return dealership;
+
         } catch (IOException e) {
-            System.out.println("No existing data - creating new dealership");
+            System.out.println("Error loading dealership.");
             return new Dealership("Default Dealership", "Unknown Address", "000-000-0000");
         }
     }
@@ -31,9 +50,9 @@ public class DealershipFileManager {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
 
             writer.write(String.join("|",
-                    dealership.getName(),
-                    dealership.getAddress(),
-                    dealership.getPhone()
+                   dealership.getName(),
+                   dealership.getAddress(),
+                   dealership.getPhone()
             ));
             writer.newLine();
 
@@ -43,7 +62,7 @@ public class DealershipFileManager {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.err.println("Error saving dealership data: " + e.getMessage());
+            System.out.println("Error saving dealership.");
         }
     }
 }
