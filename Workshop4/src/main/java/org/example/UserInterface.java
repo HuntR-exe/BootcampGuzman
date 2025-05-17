@@ -25,6 +25,7 @@ public class UserInterface {
             System.out.println("7. List All Vehicles");
             System.out.println("8. Add Vehicle");
             System.out.println("9. Remove Vehicle");
+            System.out.println("10. Sell/Lease Vehicle");
             System.out.println("0. Exit");
 
             int choice = getIntInput("Enter your choice: ");
@@ -40,6 +41,7 @@ public class UserInterface {
                 case 7 -> getAllVehiclesRequest();
                 case 8 -> addVehicleRequest();
                 case 9 -> removeVehicleRequest();
+                case 10 -> saleLeaseRequest();
                 case 0 -> {
                     new DealershipFileManager().saveDealership(dealership);
                     System.out.println("Goodbye!");
@@ -183,5 +185,48 @@ public class UserInterface {
                 scanner.nextLine();
             }
         }
+    }
+
+    private void saleLeaseRequest() {
+        System.out.print("Enter VIN of vehicle: ");
+        int vin = getIntInput("");
+        scanner.nextLine();
+
+        Vehicle vehicle = findVehicleByVin(vin);
+        if (vehicle == null) {
+            System.out.println("Vehicle not found!");
+            return;
+        }
+
+        System.out.print("Customer name: ");
+        String name = scanner.nextLine();
+        System.out.print("Customer email: ");
+        String email = scanner.nextLine();
+        String date = java.time.LocalDate.now().toString();
+
+        System.out.print("Is this a (1) Sale or (2) Lease? ");
+        int choice = getIntInput("");
+        scanner.nextLine();
+
+        Contract contract;
+        if (choice == 1) {
+            System.out.print("Finance? (true/false): ");
+            boolean finance = scanner.nextLine().equalsIgnoreCase("true");
+            contract = new SalesContract(date, name, email, vehicle, finance);
+        } else {
+
+            contract = new LeaseContract(date, name, email, vehicle);
+        }
+
+        new ContractFileManager().saveContract(contract);
+        dealership.removeVehicle(vehicle);
+        System.out.println("Contract saved and vehicle removed from inventory!");
+    }
+
+    private Vehicle findVehicleByVin(int vin) {
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vin) return vehicle;
+        }
+        return null;
     }
 }
