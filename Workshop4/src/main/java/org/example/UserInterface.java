@@ -34,15 +34,15 @@ public class UserInterface {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 -> processGetByPriceRequest();
-                case 2 -> processGetByMakeModelRequest();
-                case 3 -> processGetByYearRequest();
-                case 4 -> processGetByColorRequest();
-                case 5 -> processGetByMileageRequest();
-                case 6 -> processGetByVehicleTypeRequest();
-                case 7 -> processGetAllVehiclesRequest();
-                case 8 -> processAddVehicleRequest();
-                case 9 -> processRemoveVehicleRequest();
+                case 1 -> getVehiclesByPrice();
+                case 2 -> getVehiclesByMakeModel();
+                case 3 -> getVehiclesByYear();
+                case 4 -> getVehiclesByColor();
+                case 5 -> getVehiclesByMileage();
+                case 6 -> getVehiclesByType();
+                case 7 -> getAllVehicles();
+                case 8 -> addVehicle();
+                case 9 -> removeVehicle();
                 case 99 -> {
                     fileManager.saveDealership(dealership);
                     System.out.println("Goodbye!");
@@ -53,19 +53,19 @@ public class UserInterface {
         }
     }
 
-    private void processGetAllVehiclesRequest() {
+    private void getAllVehicles() {
     }
 
-    private void processGetByVehicleTypeRequest() {
+    private void getVehiclesByType() {
     }
 
-    private void processGetByMileageRequest() {
+    private void getVehiclesByMileage() {
     }
 
-    private void processGetByColorRequest() {
+    private void getVehiclesByColor() {
     }
 
-    private void processGetByPriceRequest() {
+    private void getVehiclesByPrice() {
         System.out.print("Enter minimum price: ");
         double min = scanner.nextDouble();
         System.out.print("Enter maximum price: ");
@@ -73,7 +73,7 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
-    private void processGetByMakeModelRequest() {
+    private void getVehiclesByMakeModel() {
         System.out.print("Enter make: ");
         String make = scanner.nextLine();
         System.out.print("Enter model: ");
@@ -81,7 +81,7 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByMakeModel(make, model));
     }
 
-    private void processGetByYearRequest() {
+    private void getVehiclesByYear() {
         System.out.print("Enter minimum year: ");
         int min = scanner.nextInt();
         System.out.print("Enter maximum year: ");
@@ -90,7 +90,7 @@ public class UserInterface {
     }
 
 
-    private void processAddVehicleRequest() {
+    private void addVehicle() {
         System.out.println("Enter vehicle details:");
         System.out.print("VIN: ");
         int vin = scanner.nextInt();
@@ -122,7 +122,7 @@ public class UserInterface {
         System.out.println("Vehicle added successfully!");
     }
 
-    private void processRemoveVehicleRequest() {
+    private void removeVehicle() {
         System.out.print("Enter VIN of vehicle to remove: ");
         int vin = scanner.nextInt();
         List<Vehicle> vehicles = dealership.getAllVehicles();
