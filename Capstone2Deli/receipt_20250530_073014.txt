@@ -1,0 +1,12 @@
+Order Time: 2025-05-30T07:30:14.737447800
+
+SANDWICHES:
+1) 8 inch untoasted sandwich on white bread. Toppings: Steak, Cheddar, Lettuce, Mayo. Price: $10.50
+2) 4 inch toasted sandwich on white bread. Toppings: Ham, Swiss (extra), Tomatoes. Price: $7.55
+
+DRINKS:
+- medium DrPepper - $2.50
+
+CHIPS: 1 bag(s) @ $1.50 each
+
+SUBTOTAL: $22.05
